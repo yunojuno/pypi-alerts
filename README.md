@@ -12,6 +12,8 @@ At YunoJuno we have a Django project that includes almost 100 external packages.
 4. Apply minor updates as a second commit
 5. Take a view on major updates
 
+This task is a PITA, and so we decided to make it simpler.
+
 This project addresses the first two points - monitoring your existing requirements against the latest available, and grouping the updates. Let's say you run the following:
 
 ```shell
@@ -37,3 +39,10 @@ As a standalone function this is of moderate value - for 100 packages it saves t
 4. The service will refresh your project (daily), and email you with any updates found
 
 And that's it. There are probably lots more things it could do, but that's all for now.
+
+#How it works
+
+If you upload a requirements file it will parse out both the package name and version (e.g. `requests`, `2.8.1`). Once a day it will run through every package it knows about (yours and everyone else's) and pull down from PyPI the latest version number (using the [JSON API](https://wiki.python.org/moin/PyPIJSON)). If the version you are using is behind the latest, then you get an alert (one a day, containing the summary).
+
+Each requirements file upload is stored as a 'project', which has a unique URL (obfuscated, but not secure).
+
