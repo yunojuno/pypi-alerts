@@ -40,9 +40,16 @@ As a standalone function this is of moderate value - for 100 packages it saves t
 
 And that's it. There are probably lots more things it could do, but that's all for now.
 
-#How it works
+##How it works
 
 If you upload a requirements file it will parse out both the package name and version (e.g. `requests`, `2.8.1`). Once a day it will run through every package it knows about (yours and everyone else's) and pull down from PyPI the latest version number (using the [JSON API](https://wiki.python.org/moin/PyPIJSON)). If the version you are using is behind the latest, then you get an alert (one a day, containing the summary).
 
 Each requirements file upload is stored as a 'project', which has a unique URL (obfuscated, but not secure).
 
+##Current status
+
+We're thinking about it.
+
+In the first instance, it won't support sophisticated parsing of requirements files - it'll only cope with '==' versions, so if you store your requirements file in VCS, and it contains '>=' or other markers, then you should `pip freeze` the current versions into a separate file for upload. It also won't cope with `-e` editable packages - these will be listed beneath the table, but won't be compared.
+
+  
