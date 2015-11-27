@@ -2,6 +2,10 @@
 
 A service for monitoring PyPI packages
 
+**UPDATE**
+
+This project has been superceded by the Django-specific version - [django-package-monitor](https://github.com/yunojuno/django-package-monitor). There's merit in the idea of live notifications, so I won't scrap this - and will probably fold dpm into this at some point, but for now this is on-hold.
+
 ##Background
 
 At YunoJuno we have a Django project that includes almost 100 external packages. In order to manage updates to these we have a rolling development task that comes around in the first week of each month, and includes the following:
